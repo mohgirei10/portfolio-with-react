@@ -1,0 +1,84 @@
+/* Sidebar Alignment */
+#main {
+  margin-left: 120px;
+}
+
+/* Smooth Scrolling for Anchor Links */
+html {
+  scroll-behavior: smooth;
+  /* Adjust this value if your top navbar on mobile is taller */
+  scroll-padding-top: 60px; 
+}
+
+/* Tool Icons - Grayscale to Color */
+.tool-icon {
+  width: 100%;
+  height: 120px;
+  object-fit: contain;
+  filter: grayscale(500%);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  padding: 15px;
+  cursor: pointer;
+}
+
+.tool-icon:hover {
+  color: #ffffff;
+  transform: scale(1.1) translateY(-10px);
+  filter: grayscale(100%);
+
+}
+
+.icon {
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  padding: 15px;
+  cursor: pointer;
+  object-fit: contain;
+}
+
+.icon:hover {
+  transform: scale(1.1) translateY(-10px);
+   filter: grayscale(100%);
+}
+
+/* Theme Button Animation */
+.theme-btn {
+  transition: transform 0.2s ease;
+  cursor: pointer;
+  border: none;
+  background: transparent;
+}
+
+.theme-btn:active {
+  transform: scale(0.8);
+}
+
+.w3-button{
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      
+}
+
+.w3-button:hover{
+  transform: scale(1.1) translateY(-3px);
+  filter: grayscale(100%);
+}
+
+/* Mobile Responsiveness */
+@media only screen and (max-width: 600px) {
+  #main {
+    margin-left: 0 !important;
+    padding-top: 50px; /* Space for the top mobile menu */
+  }
+  
+  .tool-icon {
+    height: 80px; /* Slightly smaller icons on mobile */
+  }
+  .icon {
+    height: 40px; /* Slightly smaller icons on mobile */
+  }
+}
+
+/* Ensure images don't overflow */
+img {
+  max-width: 100%;
+  height: auto;
+}
