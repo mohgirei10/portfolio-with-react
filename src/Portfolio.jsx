@@ -3,14 +3,19 @@ import React, { useState, useEffect } from 'react';
 const Portfolio = () => {
   // 1. Theme Persistence Logic
   const [isDarkMode, setIsDarkMode] = useState(() => {
-    const savedTheme = localStorage.getItem('theme') || 'light';
-    return savedTheme ? JSON.parse(savedTheme) : true;
+    // Look for the saved theme in LocalStorage
+    const savedTheme = localStorage.getItem('theme');
+    
+    // If it exists, parse it (it's stored as a string "true" or "false")
+    // If it doesn't exist, default to true (Dark Mode)
+    return savedTheme !== null ? JSON.parse(savedTheme) : true;
   });
 
   // 2. Mobile Menu Logic
   const [showMobileMenu, setShowMobileMenu] = useState(false);
   const toggleMenu = () => setShowMobileMenu(!showMobileMenu);
 
+  // 3. Update LocalStorage whenever isDarkMode changes
   useEffect(() => {
     localStorage.setItem('theme', JSON.stringify(isDarkMode));
   }, [isDarkMode]);
@@ -22,6 +27,17 @@ const Portfolio = () => {
   const textClass = isDarkMode ? "w3-text-grey" : "w3-text-dark-grey";
   const headingClass = isDarkMode ? "w3-text-light-grey" : "w3-text-black";
   const sidebarBg = isDarkMode ? "#222" : "#f1f1f1";
+
+  return (
+    <div className={themeClass} style={{ transition: 'background-color 0.4s ease', minHeight: '100vh' }}>
+       {/* Your component content goes here */}
+       <button onClick={toggleTheme}>
+         Switch to {isDarkMode ? 'Light' : 'Dark'} Mode
+       </button>
+    </div>
+  );
+};
+
 
   return (
     <div className={themeClass} style={{ transition: 'background-color 0.4s ease', minHeight: '100vh' }}>
@@ -235,6 +251,6 @@ problem-solving in Agile environment</p>
       </div>
     </div>
   );
-};
+
 
 export default Portfolio;
